@@ -1,0 +1,41 @@
+.section {
+    padding: 4rem 1.5rem;
+    background: white;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-main);
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.item {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface-highlight);
+}
+
+.question {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.answer {
+    color: var(--text-muted);
+    line-height: 1.6;
+}

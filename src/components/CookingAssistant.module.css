@@ -1,0 +1,267 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    /* For modal context */
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.message {
+    display: flex;
+    gap: 1rem;
+    max-width: 80%;
+}
+
+.message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--surface-highlight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.message.assistant .avatar {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.inputArea {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 1rem;
+    background: var(--surface);
+}
+
+.input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+    outline: none;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.input:focus {
+    border-color: var(--primary);
+}
+
+.sendBtn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.sendBtn:hover:not(:disabled) {
+    transform: scale(1.05);
+}
+
+.sendBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.bubble {
+    background: var(--surface-highlight);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border-top-left-radius: 2px;
+    line-height: 1.5;
+    color: var(--text-main);
+}
+
+.message.user .bubble {
+    background: var(--primary);
+    color: white;
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: 2px;
+}
+
+.recipeCard {
+    margin-top: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.recipeTitle {
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary);
+}
+
+.ingredientList {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.ingredientItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.cardActions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.actionBtn,
+.recipeBtn {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    border: none;
+}
+
+.actionBtn {
+    background: var(--text-main);
+    color: white;
+}
+
+.recipeBtn {
+    background: #FFF;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+}
+
+.recipeBtn:hover {
+    background: var(--surface-highlight);
+}
+
+/* Typing indicator */
+.typing span {
+    animation: blink 1.4s infinite both;
+    margin: 0 1px;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Modal Styles */
+.modalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(2px);
+}
+
+.modalContent {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+}
+
+.modalHeader {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface-highlight);
+}
+
+.modalHeader h3 {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.modalHeader button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.modalBody {
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.modalBody h4 {
+    margin-bottom: 0.5rem;
+}
+
+.modalBody ol {
+    padding-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.modalBody li {
+    margin-bottom: 0.5rem;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}

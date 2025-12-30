@@ -1,0 +1,94 @@
+:root {
+  /* Brand Colors - Premium & Vibrant */
+  --primary: #FF4757;
+  /* Vibrant Red/Pink */
+  --primary-hover: #FF6B81;
+  --secondary: #2F3542;
+  /* Dark Gray */
+  --accent: #2ED573;
+  /* Success Green */
+
+  /* Backgrounds & Surfaces */
+  --background: #F8F9FA;
+  /* Very light gray */
+  --surface: #FFFFFF;
+  --surface-highlight: #F1F2F6;
+
+  /* Typography */
+  --text-main: #2F3542;
+  --text-muted: #57606F;
+  --text-light: #A4B0BE;
+
+  /* Borders & Radius */
+  --border: #DFE4EA;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.5);
+  --backdrop-blur: blur(12px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1A1A1A;
+    --surface: #2C2C2C;
+    --surface-highlight: #3A3A3A;
+    --text-main: #FFFFFF;
+    --text-muted: #A4B0BE;
+    --text-light: #57606F;
+    --border: #4A4A4A;
+    --glass-bg: rgba(44, 44, 44, 0.85);
+    --glass-border: 1px solid rgba(74, 74, 74, 0.5);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
