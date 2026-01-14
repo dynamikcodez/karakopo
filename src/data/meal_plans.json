@@ -1,0 +1,34 @@
+{
+    "default_plan": {
+        "Monday": {
+            "Breakfast": "cereal_cornflakes",
+            "Lunch": "stir_fry_spag",
+            "Supper": "rice_stew"
+        },
+        "Tuesday": {
+            "Breakfast": "fried_egg_bread",
+            "Lunch": "eba_soup",
+            "Supper": "noodles"
+        },
+        "Wednesday": {
+            "Breakfast": "beans_plantain",
+            "Lunch": "yamarita",
+            "Supper": "fruits"
+        },
+        "Thursday": {
+            "Breakfast": "pancakes",
+            "Lunch": "fufu_egusi",
+            "Supper": "wanke"
+        },
+        "Friday": {
+            "Breakfast": "oats",
+            "Lunch": "yam_egg_sauce",
+            "Supper": "stir_fry_spag"
+        },
+        "Saturday": {
+            "Breakfast": "cereal_cornflakes",
+            "Lunch": "moimoi",
+            "Supper": "sandwich"
+        }
+    }
+}

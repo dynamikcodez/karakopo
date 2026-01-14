@@ -1,0 +1,219 @@
+[
+  {
+    "id": 1,
+    "name": "Kings Pure Vegetable Oil",
+    "price": 1500,
+    "unit": "1 Liter",
+    "category": "Oils",
+    "stock": "In Stock",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Mamador Vegetable Oil",
+    "price": 1350,
+    "unit": "1 Liter",
+    "category": "Oils",
+    "stock": "In Stock"
+  },
+  {
+    "id": 3,
+    "name": "Foreign Parboiled Rice",
+    "price": 1800,
+    "unit": "1 Derica",
+    "category": "Grains",
+    "stock": "In Stock"
+  },
+  {
+    "id": 4,
+    "name": "Honey Beans (Oloyin)",
+    "price": 900,
+    "unit": "1 Derica",
+    "category": "Grains",
+    "stock": "Low Stock"
+  },
+  {
+    "id": 5,
+    "name": "Ijebu Garri",
+    "price": 500,
+    "unit": "1 Paint",
+    "category": "Tubers",
+    "stock": "In Stock"
+  },
+  {
+    "id": 6,
+    "name": "Dried Thyme Leaves",
+    "price": 200,
+    "unit": "Sachet",
+    "category": "Spices",
+    "stock": "In Stock"
+  },
+  {
+    "id": 7,
+    "name": "Curry Powder (Lion)",
+    "price": 250,
+    "unit": "Sachet",
+    "category": "Spices",
+    "stock": "In Stock"
+  },
+  {
+    "id": 8,
+    "name": "Dangote Sugar",
+    "price": 850,
+    "unit": "1 Packet",
+    "category": "Pantry",
+    "stock": "In Stock"
+  },
+  {
+    "id": 9,
+    "name": "Crate of Eggs",
+    "price": 3500,
+    "unit": "1 Crate (30 pcs)",
+    "category": "Proteins",
+    "stock": "In Stock"
+  },
+  {
+    "id": 10,
+    "name": "Slice Bread (Family Loading)",
+    "price": 1200,
+    "unit": "Loaf",
+    "category": "Bakery",
+    "stock": "In Stock"
+  },
+  {
+    "id": 11,
+    "name": "Ripe Plantain",
+    "price": 2000,
+    "unit": "Bunch",
+    "category": "Tubers",
+    "stock": "In Stock"
+  },
+  {
+    "id": 12,
+    "name": "Golden Morn",
+    "price": 1500,
+    "unit": "1 Pack",
+    "category": "Provisions",
+    "stock": "In Stock"
+  },
+  {
+    "id": 13,
+    "name": "Cornflakes",
+    "price": 1800,
+    "unit": "1 Pack",
+    "category": "Provisions",
+    "stock": "In Stock"
+  },
+  {
+    "id": 14,
+    "name": "Quaker Oats",
+    "price": 2200,
+    "unit": "1 Tin",
+    "category": "Provisions",
+    "stock": "In Stock"
+  },
+  {
+    "id": 15,
+    "name": "Powdered Milk (Dano)",
+    "price": 2500,
+    "unit": "400g Refill",
+    "category": "Provisions",
+    "stock": "In Stock"
+  },
+  {
+    "id": 16,
+    "name": "Spaghetti (Golden Penny)",
+    "price": 950,
+    "unit": "1 Pack",
+    "category": "Grains",
+    "stock": "In Stock"
+  },
+  {
+    "id": 17,
+    "name": "Indomie Noodles (Super Pack)",
+    "price": 8500,
+    "unit": "1 Carton",
+    "category": "Grains",
+    "stock": "In Stock"
+  },
+  {
+    "id": 18,
+    "name": "Yam Tuber",
+    "price": 2500,
+    "unit": "Medium Tuber",
+    "category": "Tubers",
+    "stock": "In Stock"
+  },
+  {
+    "id": 19,
+    "name": "Ground Egusi",
+    "price": 1200,
+    "unit": "1 Cup",
+    "category": "Soup",
+    "stock": "In Stock"
+  },
+  {
+    "id": 20,
+    "name": "Palm Oil",
+    "price": 1000,
+    "unit": "1 Bottle",
+    "category": "Oils",
+    "stock": "In Stock"
+  },
+  {
+    "id": 21,
+    "name": "Stockfish Bits",
+    "price": 3000,
+    "unit": "1 Pack",
+    "category": "Soup",
+    "stock": "In Stock"
+  },
+  {
+    "id": 22,
+    "name": "Ground Crayfish",
+    "price": 500,
+    "unit": "1 Cup",
+    "category": "Soup",
+    "stock": "In Stock"
+  },
+  {
+    "id": 23,
+    "name": "Fresh Tomatoes & Pepper Mix",
+    "price": 2000,
+    "unit": "1 Bowl",
+    "category": "Vegetables",
+    "stock": "In Stock"
+  },
+  {
+    "id": 24,
+    "name": "Titus Sardine",
+    "price": 1100,
+    "unit": "1 Tin",
+    "category": "Provisions",
+    "stock": "In Stock"
+  },
+  {
+    "id": 25,
+    "name": "Wheat Flour",
+    "price": 1500,
+    "unit": "1 Kg",
+    "category": "Baking",
+    "stock": "In Stock"
+  },
+  {
+    "id": 26,
+    "name": "Seasonal Fruits Pack",
+    "price": 1500,
+    "unit": "1 Pack",
+    "category": "Fruits",
+    "stock": "In Stock"
+  },
+  {
+    "id": 27,
+    "name": "Fufu (Processed)",
+    "price": 200,
+    "unit": "1 Wrap",
+    "category": "Tubers",
+    "stock": "In Stock"
+  }
+]

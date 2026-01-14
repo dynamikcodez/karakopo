@@ -1,0 +1,188 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #636e72;
+    font-size: 1.1rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.dayColumn {
+    padding: 0;
+    overflow: hidden;
+}
+
+.dayHeader {
+    background: #0984e3;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mealSlot {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.mealSlot:last-child {
+    border-bottom: none;
+}
+
+.mealSlot:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.mealType {
+    font-size: 0.75rem;
+    color: #b2bec3;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+.mealName {
+    font-weight: 600;
+    color: #2d3436;
+    font-size: 1rem;
+}
+
+.mealPrice {
+    font-size: 0.85rem;
+    color: #00b894;
+    margin-top: 0.25rem;
+}
+
+.actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.totalSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.totalLabel {
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+.totalPrice {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.checkoutBtn {
+    background: #25D366;
+    /* WhatsApp Green */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.checkoutBtn:hover {
+    transform: translateY(-2px);
+    background: #20ba5a;
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modalContent {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mealOption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.mealOption:hover {
+    background: #f1f2f6;
+}
+
+.emptyState {
+    color: #b2bec3;
+    font-style: italic;
+}

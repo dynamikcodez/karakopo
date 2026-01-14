@@ -1,0 +1,379 @@
+[
+    {
+        "id": "cereal_cornflakes",
+        "name": "Cornflakes & Milk",
+        "ingredients": [
+            {
+                "inventory_id": 13,
+                "qty": 0.2,
+                "label": "Cornflakes (portion)"
+            },
+            {
+                "inventory_id": 15,
+                "qty": 0.1,
+                "label": "Milk (portion)"
+            },
+            {
+                "inventory_id": 8,
+                "qty": 0.05,
+                "label": "Sugar"
+            }
+        ],
+        "description": "Crunchy cornflakes with rich milk."
+    },
+    {
+        "id": "fried_egg_bread",
+        "name": "Fried Egg & Bread",
+        "ingredients": [
+            {
+                "inventory_id": 10,
+                "qty": 0.5,
+                "label": "Half Loaf Bread"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.1,
+                "label": "2 Eggs"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.05,
+                "label": "Oil"
+            }
+        ],
+        "description": "Classic Lagos breakfast."
+    },
+    {
+        "id": "beans_plantain",
+        "name": "Beans & Plantain",
+        "ingredients": [
+            {
+                "inventory_id": 4,
+                "qty": 0.5,
+                "label": "Beans"
+            },
+            {
+                "inventory_id": 11,
+                "qty": 0.5,
+                "label": "Plantain"
+            },
+            {
+                "inventory_id": 20,
+                "qty": 0.1,
+                "label": "Palm Oil"
+            }
+        ],
+        "description": "Ewa Agoyin style beans with fried plantain."
+    },
+    {
+        "id": "pancakes",
+        "name": "Pancakes",
+        "ingredients": [
+            {
+                "inventory_id": 25,
+                "qty": 0.3,
+                "label": "Flour"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.05,
+                "label": "1 Egg"
+            },
+            {
+                "inventory_id": 15,
+                "qty": 0.05,
+                "label": "Milk"
+            },
+            {
+                "inventory_id": 8,
+                "qty": 0.05,
+                "label": "Sugar"
+            }
+        ],
+        "description": "Fluffy pancakes."
+    },
+    {
+        "id": "oats",
+        "name": "Oats & Milk",
+        "ingredients": [
+            {
+                "inventory_id": 14,
+                "qty": 0.2,
+                "label": "Oats"
+            },
+            {
+                "inventory_id": 15,
+                "qty": 0.1,
+                "label": "Milk"
+            },
+            {
+                "inventory_id": 8,
+                "qty": 0.05,
+                "label": "Sugar"
+            }
+        ],
+        "description": "Hot and creamy oats."
+    },
+    {
+        "id": "stir_fry_spag",
+        "name": "Stir Fry Spaghetti",
+        "ingredients": [
+            {
+                "inventory_id": 16,
+                "qty": 1,
+                "label": "Spaghetti"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.1,
+                "label": "Veg Oil"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.2,
+                "label": "Pepper Mix"
+            },
+            {
+                "inventory_id": 7,
+                "qty": 0.1,
+                "label": "Spices"
+            }
+        ],
+        "description": "Spicy spaghetti stir fry."
+    },
+    {
+        "id": "eba_soup",
+        "name": "Eba & Egusi Soup",
+        "ingredients": [
+            {
+                "inventory_id": 5,
+                "qty": 0.2,
+                "label": "Garri"
+            },
+            {
+                "inventory_id": 19,
+                "qty": 0.5,
+                "label": "Egusi"
+            },
+            {
+                "inventory_id": 20,
+                "qty": 0.2,
+                "label": "Palm Oil"
+            },
+            {
+                "inventory_id": 21,
+                "qty": 0.2,
+                "label": "Stockfish"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.2,
+                "label": "Pepper Mix"
+            }
+        ],
+        "description": "Yellow garri with rich egusi soup."
+    },
+    {
+        "id": "yamarita",
+        "name": "Yamarita",
+        "ingredients": [
+            {
+                "inventory_id": 18,
+                "qty": 0.3,
+                "label": "Yam"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.1,
+                "label": "2 Eggs"
+            },
+            {
+                "inventory_id": 25,
+                "qty": 0.1,
+                "label": "Flour"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.2,
+                "label": "Deep Frying Oil"
+            }
+        ],
+        "description": "Egg-coated fried yam."
+    },
+    {
+        "id": "fufu_egusi",
+        "name": "Fufu & Egusi",
+        "ingredients": [
+            {
+                "inventory_id": 27,
+                "qty": 2,
+                "label": "2 Wraps Fufu"
+            },
+            {
+                "inventory_id": 19,
+                "qty": 0.5,
+                "label": "Egusi"
+            },
+            {
+                "inventory_id": 20,
+                "qty": 0.2,
+                "label": "Palm Oil"
+            }
+        ],
+        "description": "Soft fufu with soup."
+    },
+    {
+        "id": "yam_egg_sauce",
+        "name": "Yam & Egg Sauce",
+        "ingredients": [
+            {
+                "inventory_id": 18,
+                "qty": 0.3,
+                "label": "Yam"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.15,
+                "label": "3 Eggs"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.3,
+                "label": "Pepper Mix"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.1,
+                "label": "Oil"
+            }
+        ],
+        "description": "Boiled yam with garden egg sauce or fried egg sauce."
+    },
+    {
+        "id": "moimoi",
+        "name": "Moimoi (Main)",
+        "ingredients": [
+            {
+                "inventory_id": 4,
+                "qty": 0.5,
+                "label": "Beans"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.2,
+                "label": "Pepper"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.2,
+                "label": "Oil"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.05,
+                "label": "Egg (Garnish)"
+            }
+        ],
+        "description": "Steamed bean pudding."
+    },
+    {
+        "id": "rice_stew",
+        "name": "White Rice & Stew",
+        "ingredients": [
+            {
+                "inventory_id": 3,
+                "qty": 0.5,
+                "label": "Rice"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.5,
+                "label": "Stew Base"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.2,
+                "label": "Oil"
+            }
+        ],
+        "description": "Sunday special rice and stew."
+    },
+    {
+        "id": "noodles",
+        "name": "Noodles & Egg",
+        "ingredients": [
+            {
+                "inventory_id": 17,
+                "qty": 0.05,
+                "label": "2 Packs Noodles"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.1,
+                "label": "2 Eggs"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.1,
+                "label": "Pepper"
+            }
+        ],
+        "description": "Quick Indomie with egg."
+    },
+    {
+        "id": "fruits",
+        "name": "Fruit Salad",
+        "ingredients": [
+            {
+                "inventory_id": 26,
+                "qty": 1,
+                "label": "Fruit Pack"
+            }
+        ],
+        "description": "Healthy seasonal fruits."
+    },
+    {
+        "id": "wanke",
+        "name": "Wanke Rice",
+        "ingredients": [
+            {
+                "inventory_id": 3,
+                "qty": 0.4,
+                "label": "Rice"
+            },
+            {
+                "inventory_id": 4,
+                "qty": 0.2,
+                "label": "Beans"
+            },
+            {
+                "inventory_id": 6,
+                "qty": 0.05,
+                "label": "Thyme (Color)"
+            }
+        ],
+        "description": "Rice and beans mixed together."
+    },
+    {
+        "id": "sandwich",
+        "name": "Club Sandwich",
+        "ingredients": [
+            {
+                "inventory_id": 10,
+                "qty": 0.3,
+                "label": "Bread Slices"
+            },
+            {
+                "inventory_id": 24,
+                "qty": 0.5,
+                "label": "Sardine"
+            },
+            {
+                "inventory_id": 9,
+                "qty": 0.1,
+                "label": "Boiled Egg"
+            }
+        ],
+        "description": "Toasted bread with sardine and egg."
+    }
+]

@@ -29,6 +29,25 @@ export function CartProvider({ children }) {
         setIsOpen(true); // Open cart when added
     };
 
+    const addItemsToCart = (items) => {
+        setCart(prev => {
+            let newCart = [...prev];
+            items.forEach(newItem => {
+                const existingIndex = newCart.findIndex(item => item.id === newItem.id);
+                if (existingIndex > -1) {
+                    newCart[existingIndex] = {
+                        ...newCart[existingIndex],
+                        qty: newCart[existingIndex].qty + (newItem.qty || 1)
+                    };
+                } else {
+                    newCart.push({ ...newItem, qty: newItem.qty || 1 });
+                }
+            });
+            return newCart;
+        });
+        setIsOpen(true);
+    };
+
     const removeFromCart = (id) => {
         setCart(prev => prev.filter(item => item.id !== id));
     };
@@ -54,7 +73,7 @@ export function CartProvider({ children }) {
     }, 0);
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty, clearCart, isOpen, toggleCart, total }}>
+        <CartContext.Provider value={{ cart, addToCart, addItemsToCart, removeFromCart, updateQty, clearCart, isOpen, toggleCart, total }}>
             {children}
         </CartContext.Provider>
     );

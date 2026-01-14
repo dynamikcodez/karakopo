@@ -1,172 +1,178 @@
 'use client';
 
-import { useState } from 'react';
-import { Package, TrendingUp, Save, Trash, Plus } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Package, TrendingUp, Save, Trash, Plus, FileJson, Calendar } from 'lucide-react';
+import GlassContainer from '../../../components/GlassContainer';
 import styles from './dashboard.module.css';
-
-// Mock Initial Data
-const INITIAL_INVENTORY = [
-    { id: 1, name: "Kings Oil", price: 1200, unit: "1 Liter", stock: "In Stock" },
-    { id: 2, name: "Rice (Foreign)", price: 1800, unit: "1 Derica", stock: "In Stock" },
-    { id: 3, name: "Beans (Oloyin)", price: 900, unit: "1 Derica", stock: "Low Stock" },
-];
-
-const ANALYTICS_DATA = [
-    { query: "Jollof Rice", count: 124, trend: "+12%" },
-    { query: "Egusi Soup", count: 98, trend: "+5%" },
-    { query: "Fried Rice", count: 86, trend: "-2%" },
-    { query: "Afang", count: 45, trend: "+8%" },
-];
 
 export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('inventory');
-    const [inventory, setInventory] = useState(INITIAL_INVENTORY);
-    const [searchStats] = useState(ANALYTICS_DATA);
+    const [inventory, setInventory] = useState([]);
+    const [mealsJson, setMealsJson] = useState('');
+    const [plansJson, setPlansJson] = useState('');
 
-    // Simple handlers for MVP demo
-    const updatePrice = (id, newPrice) => {
-        setInventory(prev => prev.map(item => item.id === id ? { ...item, price: newPrice } : item));
+    // Inventory Management
+    useEffect(() => {
+        if (activeTab === 'inventory') fetchInventory();
+        if (activeTab === 'meals') fetchJson('meals', setMealsJson);
+        if (activeTab === 'plans') fetchJson('plans', setPlansJson);
+    }, [activeTab]);
+
+    const fetchInventory = async () => {
+        const res = await fetch('/api/admin/update-data?type=inventory');
+        const data = await res.json();
+        setInventory(data);
     };
 
-    const toggleStock = (id) => {
-        const states = ["In Stock", "Low Stock", "Out of Stock"];
-        setInventory(prev => prev.map(item => {
-            if (item.id === id) {
-                const nextIdx = (states.indexOf(item.stock) + 1) % states.length;
-                return { ...item, stock: states[nextIdx] };
-            }
-            return item;
-        }));
+    const fetchJson = async (type, setter) => {
+        const res = await fetch(`/api/admin/update-data?type=${type}`);
+        const data = await res.json();
+        setter(JSON.stringify(data, null, 2));
+    };
+
+    const saveJson = async (type, jsonString) => {
+        try {
+            const data = JSON.parse(jsonString);
+            const res = await fetch('/api/admin/update-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type, data })
+            });
+            if (res.ok) alert(`${type} updated successfully! Check the planner to see changes.`);
+            else alert('Failed to update.');
+        } catch (e) {
+            alert("Invalid JSON format. Please check your syntax.");
+        }
+    };
+
+    const updateInventoryItem = async (updatedItem) => {
+        const newInv = inventory.map(item => item.id === updatedItem.id ? updatedItem : item);
+        setInventory(newInv);
+        // Persist
+        await fetch('/api/admin/update-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'inventory', data: newInv })
+        });
+    };
+
+    const deleteInventoryItem = async (id) => {
+        if (!confirm("Delete this item?")) return;
+        const newInv = inventory.filter(item => item.id !== id);
+        setInventory(newInv);
+        await fetch('/api/admin/update-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'inventory', data: newInv })
+        });
+    };
+
+    const addInventoryItem = async () => {
+        const name = prompt("Name:");
+        if (!name) return;
+        const price = prompt("Price:");
+        const maxId = inventory.reduce((max, i) => Math.max(max, i.id), 0);
+        const newItem = {
+            id: maxId + 1,
+            name,
+            price: parseInt(price),
+            unit: 'Unit',
+            category: 'General',
+            stock: 'In Stock'
+        };
+        const newInv = [...inventory, newItem];
+        setInventory(newInv);
+        await fetch('/api/admin/update-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ type: 'inventory', data: newInv })
+        });
     };
 
     return (
         <div className={styles.container}>
-            <aside className={styles.sidebar}>
+            <GlassContainer className={styles.sidebar}>
                 <div className={styles.logo}>KK Admin</div>
                 <nav className={styles.nav}>
-                    <button
-                        className={`${styles.navBtn} ${activeTab === 'inventory' ? styles.active : ''}`}
-                        onClick={() => setActiveTab('inventory')}
-                    >
+                    <button className={`${styles.navBtn} ${activeTab === 'inventory' ? styles.active : ''}`} onClick={() => setActiveTab('inventory')}>
                         <Package size={20} /> Inventory
                     </button>
-                    <button
-                        className={`${styles.navBtn} ${activeTab === 'analytics' ? styles.active : ''}`}
-                        onClick={() => setActiveTab('analytics')}
-                    >
-                        <TrendingUp size={20} /> Search Trends
+                    <button className={`${styles.navBtn} ${activeTab === 'meals' ? styles.active : ''}`} onClick={() => setActiveTab('meals')}>
+                        <FileJson size={20} /> Meals Data
+                    </button>
+                    <button className={`${styles.navBtn} ${activeTab === 'plans' ? styles.active : ''}`} onClick={() => setActiveTab('plans')}>
+                        <Calendar size={20} /> Weekly Plans
                     </button>
                 </nav>
-            </aside>
+            </GlassContainer>
 
             <main className={styles.main}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>{activeTab === 'inventory' ? 'Inventory Management' : 'Search Analytics'}</h1>
-                    <div className={styles.user}>Owner</div>
+                    <h1 className={styles.title}>
+                        {activeTab === 'inventory' && 'Inventory Management'}
+                        {activeTab === 'meals' && 'Meal Database Editor'}
+                        {activeTab === 'plans' && 'Weekly Plans Editor'}
+                    </h1>
                 </header>
 
-                {activeTab === 'inventory' ? (
-                    <div className={styles.content}>
-                        <div className={styles.toolbar}>
-                            <div className={styles.toolGroup}>
-                                <button className={styles.actionBtn}><Plus size={16} /> Add Item</button>
-                                <button className={styles.actionBtn}><Save size={16} /> Save Changes</button>
+                <GlassContainer className={styles.content}>
+                    {activeTab === 'inventory' && (
+                        <div>
+                            <div className={styles.toolbar}>
+                                <button className={styles.actionBtn} onClick={addInventoryItem}>+ Add Item</button>
                             </div>
-                            <p className={styles.hint}>Click Status to toggle availability.</p>
-                        </div>
-
-                        <table className={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Item Name</th>
-                                    <th>Unit</th>
-                                    <th>Price (₦)</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {inventory.map(item => (
-                                    <tr key={item.id}>
-                                        <td>
-                                            <div className={styles.imgCell}>
-                                                {item.image ? <img src={item.image} alt="" /> : <div className={styles.noImg}>Box</div>}
-                                                <button className={styles.editImgBtn} onClick={() => {
-                                                    const url = prompt("Enter Image URL:", item.image || "");
-                                                    if (url !== null) setInventory(prev => prev.map(p => p.id === item.id ? { ...p, image: url } : p));
-                                                }}>✎</button>
-                                            </div>
-                                        </td>
-                                        <td>{item.name}</td>
-                                        <td>
-                                            <select className={styles.select} defaultValue={item.unit}>
-                                                <option>1 Liter</option>
-                                                <option>1 Derica</option>
-                                                <option>1 Paint</option>
-                                                <option>1 Kg</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="number"
-                                                value={item.price}
-                                                onChange={(e) => updatePrice(item.id, e.target.value)}
-                                                className={styles.priceInput}
-                                            />
-                                        </td>
-                                        <td>
-                                            <span
-                                                className={`${styles.badge} ${styles[item.stock.replace(/\s+/g, '').toLowerCase()]}`}
-                                                onClick={() => toggleStock(item.id)}
-                                            >
+                            <table className={styles.table}>
+                                <thead>
+                                    <tr><th>ID</th><th>Name</th><th>Price</th><th>Stock</th><th>Action</th></tr>
+                                </thead>
+                                <tbody>
+                                    {inventory.map(item => (
+                                        <tr key={item.id}>
+                                            <td>{item.id}</td>
+                                            <td>{item.name}</td>
+                                            <td>
+                                                <input
+                                                    type="number"
+                                                    value={item.price}
+                                                    onChange={e => updateInventoryItem({ ...item, price: parseInt(e.target.value) })}
+                                                    style={{ width: '80px', padding: '4px' }}
+                                                />
+                                            </td>
+                                            <td onClick={() => updateInventoryItem({ ...item, stock: item.stock === 'In Stock' ? 'Out of Stock' : 'In Stock' })} style={{ cursor: 'pointer', fontWeight: 'bold', color: item.stock === 'In Stock' ? 'green' : 'red' }}>
                                                 {item.stock}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <button className={styles.iconBtn}><Trash size={16} /></button>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                ) : (
-                    <div className={styles.content}>
-                        <div className={styles.statsGrid}>
-                            <div className={styles.statCard}>
-                                <h3>Total Searches</h3>
-                                <p className={styles.statValue}>1,240</p>
-                                <span className={styles.statTrend}>+12% this week</span>
-                            </div>
-                            <div className={styles.statCard}>
-                                <h3>Conversion Rate</h3>
-                                <p className={styles.statValue}>8.5%</p>
-                                <span className={styles.statTrend}>+0.5% this week</span>
-                            </div>
+                                            </td>
+                                            <td><button onClick={() => deleteInventoryItem(item.id)}>🗑️</button></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
+                    )}
 
-                        <h2 className={styles.subTitle}>Top Requested Meals</h2>
-                        <table className={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th>Meal Name</th>
-                                    <th>Requests</th>
-                                    <th>Trend</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {searchStats.map((stat, i) => (
-                                    <tr key={i}>
-                                        <td>{stat.query}</td>
-                                        <td>{stat.count}</td>
-                                        <td className={styles.trend}>{stat.trend}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                    {activeTab === 'meals' && (
+                        <div style={{ height: 'calc(100vh - 200px)', display: 'flex', flexDirection: 'column' }}>
+                            <p className={styles.hint}>Edit the raw JSON for meals here. Be careful with syntax!</p>
+                            <textarea
+                                className={styles.jsonEditor}
+                                value={mealsJson}
+                                onChange={e => setMealsJson(e.target.value)}
+                            />
+                            <button className={styles.saveBtn} onClick={() => saveJson('meals', mealsJson)}>Save Meals Data</button>
+                        </div>
+                    )}
+
+                    {activeTab === 'plans' && (
+                        <div style={{ height: 'calc(100vh - 200px)', display: 'flex', flexDirection: 'column' }}>
+                            <p className={styles.hint}>Edit the Weekly Schedule here.</p>
+                            <textarea
+                                className={styles.jsonEditor}
+                                value={plansJson}
+                                onChange={e => setPlansJson(e.target.value)}
+                            />
+                            <button className={styles.saveBtn} onClick={() => saveJson('plans', plansJson)}>Save Weekly Plan</button>
+                        </div>
+                    )}
+                </GlassContainer>
             </main>
         </div>
     );

@@ -1,0 +1,133 @@
+.container {
+    min-height: 100vh;
+    /* Background handled by global body or passed prop if needed */
+    padding-bottom: 3rem;
+}
+
+.wrapper {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.content {
+    /* GlassContainer handles visual styles */
+    padding: 2rem;
+}
+
+.title {
+    color: #2d3436;
+    margin-bottom: 0.5rem;
+}
+
+.controls {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+}
+
+.inputGroup label {
+    font-weight: bold;
+    color: #636e72;
+}
+
+.inputGroup input,
+.inputGroup select {
+    padding: 0.8rem;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+.generateBtn {
+    padding: 0.8rem 2rem;
+    background: #6c5ce7;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+.generateBtn:hover {
+    background: #5f27cd;
+}
+
+.results {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px dashed #eee;
+}
+
+.resultTitle {
+    color: #00b894;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dayRow {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.dayName {
+    width: 120px;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.dayMeals {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.mealBadge {
+    background: #e1f5fe;
+    color: #0277bd;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.emptyBadge {
+    background: #fab1a0;
+    color: #d63031;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.whatsappBtn {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1.2rem;
+    background: #25D366;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.whatsappBtn:hover {
+    background: #20ba5a;
+}

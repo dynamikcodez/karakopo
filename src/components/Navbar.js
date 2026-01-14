@@ -19,8 +19,9 @@ export default function Navbar() {
                 {/* Desktop Nav */}
                 <nav className={styles.nav}>
                     <Link href="/store" className={styles.link}>Store</Link>
-                    <Link href="/assistant" className={styles.link}>Cook Assistant</Link>
-                    <Link href="/faq" className={styles.link}>FAQ</Link>
+                    <Link href="/planner" className={styles.link}>Weekly Planner</Link>
+                    <Link href="/budget" className={styles.link}>Budget Plan</Link>
+                    <Link href="/assistant" className={styles.link}>AI Chef</Link>
                 </nav>
 
                 <div className={styles.actions}>
