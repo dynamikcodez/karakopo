@@ -13,7 +13,6 @@ export default function Planner() {
     const [weeklyPlan, setWeeklyPlan] = useState(mealPlansData.default_plan);
     const [selectedSlot, setSelectedSlot] = useState(null); // { day, type }
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const { addItemsToCart } = useCart();
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

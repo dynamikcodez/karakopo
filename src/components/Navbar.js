@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ShoppingBag, Search, Menu } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { useCart } from '../context/CartContext';
+import StoreAssistantWidget from './StoreAssistantWidget';
 
 export default function Navbar() {
     const { cart, toggleCart } = useCart();
@@ -28,6 +29,9 @@ export default function Navbar() {
                     <button className={styles.iconBtn} aria-label="Search">
                         <Search size={22} />
                     </button>
+                    {/* Assistant Widget */}
+                    <StoreAssistantWidget />
+
                     <button className={styles.iconBtn} aria-label="Cart" onClick={toggleCart}>
                         <ShoppingBag size={22} />
                         {cart.length > 0 && <span className={styles.badge}>{cart.length}</span>}
