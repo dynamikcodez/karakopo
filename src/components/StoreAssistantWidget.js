@@ -11,7 +11,16 @@ export default function StoreAssistantWidget() {
         { role: 'ai', content: 'Hello! I am your Karakopo Kitchen Assistant. How can I help you plan your meal or shop today?' }
     ]);
     const [isLoading, setIsLoading] = useState(false);
-    const messagesEndRef = useRef(null);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+
+    const SUGGESTED_QUESTIONS = [
+        "What does Jollof rice cost to make?",
+        "Build me a meal plan for the week.",
+        "How much does food for a month cost?",
+        "What are some budget-friendly meals?",
+        "How do I make Efo Riro?",
+        "List ingredients for Fried Rice."
+    ];
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -21,12 +30,13 @@ export default function StoreAssistantWidget() {
         scrollToBottom();
     }, [messages]);
 
-    const handleSend = async () => {
-        if (!query.trim()) return;
+    const handleSend = async (text = query) => {
+        if (!text.trim()) return;
 
-        const userMsg = { role: 'user', content: query };
+        const userMsg = { role: 'user', content: text };
         setMessages(prev => [...prev, userMsg]);
         setQuery('');
+        setShowSuggestions(false);
         setIsLoading(true);
 
         try {
@@ -109,7 +119,28 @@ export default function StoreAssistantWidget() {
                             <div ref={messagesEndRef} />
                         </div>
 
+                        {showSuggestions && (
+                            <div className={styles.suggestionsMenu}>
+                                {SUGGESTED_QUESTIONS.map((q, idx) => (
+                                    <div
+                                        key={idx}
+                                        className={styles.suggestionItem}
+                                        onClick={() => handleSend(q)}
+                                    >
+                                        {q}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
                         <div className={styles.inputArea}>
+                            <button
+                                className={styles.suggestionBtn}
+                                onClick={() => setShowSuggestions(!showSuggestions)}
+                                title="Suggested Questions"
+                            >
+                                <div style={{ fontSize: '1.2rem' }}>💡</div>
+                            </button>
                             <input
                                 type="text"
                                 className={styles.input}
@@ -119,7 +150,7 @@ export default function StoreAssistantWidget() {
                                 onKeyPress={handleKeyPress}
                                 autoFocus
                             />
-                            <button className={styles.sendBtn} onClick={handleSend} disabled={isLoading}>
+                            <button className={styles.sendBtn} onClick={() => handleSend()} disabled={isLoading}>
                                 <Send size={16} />
                             </button>
                         </div>

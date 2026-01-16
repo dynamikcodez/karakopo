@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import mealsData from '../../data/meals.json';
-import inventoryData from '../../data/inventory.json';
-import { retrieveContext } from '../../lib/rag';
+import mealsData from '../../../data/meals.json';
+import inventoryData from '../../../data/inventory.json';
+import { retrieveContext } from '../../../lib/rag';
 
 export async function POST(request) {
     try {
