@@ -57,9 +57,13 @@ export async function POST(request) {
             });
         }
 
-        // 3. Generic Failure
+        // 3. Generic Failure / Smart Fallback
+        const categories = [...new Set(mealsData.flatMap(m => m.ingredients).map(() => "Rice, Grains, Soups"))]; // Simplified logic for demo
+        // Better: just list some popular known categories/meals
+        const popularMeals = mealsData.slice(0, 3).map(m => m.name).join(", ");
+
         return NextResponse.json({
-            message: `I couldn't find "${query}" in our meal database yet. Try "Rice", "Beans", or "Yam".`
+            message: `I couldn't find a specific recipe for "${query}". \n\nHowever, you might be interested in our popular meals: ${popularMeals}. \n\nOr try asking about "Rice", "Stew", or "Soup"!`
         });
 
     } catch (e) {
