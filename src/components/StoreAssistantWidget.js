@@ -12,6 +12,7 @@ export default function StoreAssistantWidget() {
     ]);
     const [isLoading, setIsLoading] = useState(false);
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const messagesEndRef = useRef(null);
 
     const SUGGESTED_QUESTIONS = [
         "What does Jollof rice cost to make?",
