@@ -114,3 +114,56 @@
         display: none;
     }
 }
+
+/* Mobile Menu Styles */
+.mobileMenu {
+    position: fixed;
+    top: 70px;
+    /* Below header approx */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--surface);
+    z-index: 1500;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobileNav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.mobileLink {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    padding: 0.5rem 1rem;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.mobileLink:active,
+.mobileLink:hover {
+    background-color: var(--surface-highlight);
+    color: var(--primary);
+}

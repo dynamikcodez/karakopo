@@ -375,5 +375,32 @@
             }
         ],
         "description": "Toasted bread with sardine and egg."
+    },
+    {
+        "id": "jollof_rice",
+        "name": "Jollof Rice",
+        "ingredients": [
+            {
+                "inventory_id": 3,
+                "qty": 0.5,
+                "label": "Rice"
+            },
+            {
+                "inventory_id": 23,
+                "qty": 0.5,
+                "label": "Pepper Mix"
+            },
+            {
+                "inventory_id": 1,
+                "qty": 0.2,
+                "label": "Oil"
+            },
+            {
+                "inventory_id": 7,
+                "qty": 0.1,
+                "label": "Spices (Thyme/Curry)"
+            }
+        ],
+        "description": "Party style Nigerian Jollof Rice."
     }
 ]

@@ -1,13 +1,23 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Search, Menu } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X } from 'lucide-react';
 import styles from './Navbar.module.css';
 import { useCart } from '../context/CartContext';
 import StoreAssistantWidget from './StoreAssistantWidget';
 
 export default function Navbar() {
     const { cart, toggleCart } = useCart();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
 
     return (
         <header className={styles.header}>
@@ -36,11 +46,27 @@ export default function Navbar() {
                         <ShoppingBag size={22} />
                         {cart.length > 0 && <span className={styles.badge}>{cart.length}</span>}
                     </button>
-                    <button className={styles.menuBtn} aria-label="Menu">
-                        <Menu size={24} />
+                    <button
+                        className={styles.menuBtn}
+                        aria-label="Menu"
+                        onClick={toggleMenu}
+                    >
+                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            {isMenuOpen && (
+                <div className={styles.mobileMenu}>
+                    <nav className={styles.mobileNav}>
+                        <Link href="/store" className={styles.mobileLink} onClick={closeMenu}>Store</Link>
+                        <Link href="/planner" className={styles.mobileLink} onClick={closeMenu}>Weekly Planner</Link>
+                        <Link href="/budget" className={styles.mobileLink} onClick={closeMenu}>Budget Plan</Link>
+                        <Link href="/assistant" className={styles.mobileLink} onClick={closeMenu}>AI Chef</Link>
+                    </nav>
+                </div>
+            )}
         </header>
     );
 }

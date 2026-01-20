@@ -16,21 +16,32 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-.modalOverlay {
+.floatingTrigger {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2000;
+    bottom: 100px;
+    /* Above cart (2rem + 60px + gap) */
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #0984e3;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    pointer-events: none;
-    /* Let clicks pass through except on content */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Position the chat window relative to the top-right, assuming navbar is there */
+.floatingTrigger:hover {
+    transform: scale(1.1);
+    background: #00cec9;
+}
+
+/* Position the chat window absolutely on the document so it scrolls with the page */
 .widgetContainer {
     pointer-events: auto;
     width: 350px;
@@ -41,9 +52,14 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     border-radius: 16px;
-    margin-top: 80px;
-    /* Below navbar */
-    margin-right: 20px;
+
+    /* Absolute positioning for desktop scroll behavior */
+    position: absolute;
+    /* Top is set dynamically via inline style */
+    right: 2rem;
+    /* Matches FloatingCart right spacing */
+    z-index: 2000;
+
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -261,16 +277,7 @@
 
 @media (max-width: 768px) {
     .iconBtn {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        background: #0984e3;
-        color: white !important;
-        width: 56px;
-        height: 56px;
-        box-shadow: 0 8px 24px rgba(9, 132, 227, 0.4);
-        z-index: 1000;
-        animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: none;
     }
 
     .iconBtn:hover {

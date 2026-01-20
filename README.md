@@ -43,6 +43,28 @@ When adding ingredients to the database or instructing results:
 *   **Quantities**: Be specific (e.g., "1 Bottle", "2 Tubers").
 *   **Price**: Always ensure the price reflects the *current* store price.
 
+## 🥘 How to Add Recipes
+
+To add new meals to the AI Chef, edit `src/data/meals.json`:
+
+1.  **Open** `src/data/meals.json`.
+2.  **Add** a new object to the list following this format:
+    ```json
+    {
+        "id": "unique_id_here",
+        "name": "Meal Name",
+        "ingredients": [
+            {
+                "inventory_id": 1, // Must match an ID in inventory.json
+                "qty": 1,          // Quantity needed
+                "label": "Item Name"
+            }
+        ],
+        "description": "Short description."
+    }
+    ```
+3.  **Save**. The AI will immediately recognize the new meal.
+
 ## 🏃‍♂️ Running Locally
 
 1.  **Install Dependencies**:
