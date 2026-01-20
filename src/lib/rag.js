@@ -14,7 +14,7 @@ export function retrieveContext(query) {
     );
 
     if (matchedMeals.length > 0) {
-        context.push("Found relevant meals:");
+        context.push("Here are some meals you can make:");
         matchedMeals.forEach(m => {
             // Calculate generic price
             const price = m.ingredients.reduce((sum, ing) => {
@@ -32,7 +32,7 @@ export function retrieveContext(query) {
     );
 
     if (matchedInventory.length > 0) {
-        context.push("\nFound ingredients in stock:");
+        context.push("\nI found these ingredients in stock:");
         matchedInventory.forEach(i => {
             context.push(`- ${i.name}: ₦${i.price} / ${i.unit} (${i.stock})`);
         });
@@ -51,8 +51,17 @@ export function retrieveContext(query) {
             .sort((a, b) => a.price - b.price)
             .slice(0, 3);
 
-        context.push("\nBudget Recommendations:");
+        context.push("\nHere are some budget-friendly options:");
         cheapMeals.forEach(m => context.push(`- ${m.name} is one of our most affordable options at ~₦${Math.ceil(m.price)}.`));
+    }
+
+    // 4. Fallback if context is still empty
+    if (context.length === 0) {
+        context.push("I couldn't find a specific match for that.");
+        context.push("\nTry asking about these popular categories:");
+        const categories = [...new Set(inventoryData.map(i => i.category))].slice(0, 5);
+        categories.forEach(c => context.push(`- ${c}`));
+        context.push("\nOr ask for 'budget meals' to see our affordable daily options!");
     }
 
     return context.join("\n");
